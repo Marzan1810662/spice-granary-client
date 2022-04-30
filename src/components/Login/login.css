@@ -1,0 +1,59 @@
+.login-form-main-container {
+    background-image: url('https://previews.123rf.com/images/nadianb/nadianb1711/nadianb171100041/88969593-set-of-various-spices-in-a-bowls-on-white-food-background-.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-container {
+    width: 30%;
+}
+
+.form-conatiner {
+    width: 40%;
+    padding: 3% 5% 3%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    background-color: rgba(245, 245, 245, 0.629);
+}
+
+.main-form-input {
+    border-radius: 5px;
+    border: 1px solid #0000007a;
+    padding: 5px;
+}
+
+.login-btn {
+    border-radius: 5px;
+    background-color: brown;
+    border: none;
+    padding: 2%;
+    color: white;
+}
+
+.register-link a {
+    color: brown;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width:576px) {
+    .img-container {
+        display: none;
+    }
+
+    .form-conatiner {
+        width: 100%;
+        background-color: rgba(245, 245, 245, 0.767);
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:992px) {
+    .form-conatiner {
+        width: 50%;
+    }
+}

@@ -14,6 +14,7 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto fs-5">
                         <Nav.Link className='pe-3' as={NavLink} to="/home">Home</Nav.Link>
+                        <Nav.Link className='pe-3' as={NavLink} to="/login">Login</Nav.Link>
                         <NavDropdown className='pe-3'
                             title="Profile" id="collasible-nav-dropdown">
                             <NavDropdown.Item as={NavLink} to="/action/3.1">Manage Items</NavDropdown.Item>
