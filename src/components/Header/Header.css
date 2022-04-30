@@ -1,0 +1,9 @@
+.navbar h1 {
+    background-image: linear-gradient(45deg, maroon, rgb(184, 9, 9), orange);
+    background-clip: text;
+    color: transparent;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
