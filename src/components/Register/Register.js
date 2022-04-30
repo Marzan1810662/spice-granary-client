@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
 const Register = () => {
@@ -48,7 +49,8 @@ const Register = () => {
                     />
                     <input className='register-btn my-2' type="submit" value="Register" />
                 </form>
-                <h6 className='mb-2'>Already Have An Account?<span className='login-link'><Link to='/login'>Login</Link></span> </h6>
+                <h6 className='mb-3'>Already Have An Account?<span className='login-link'><Link to='/login'>Login</Link></span> </h6>
+                <SocialLogin />
             </div>
         </div>
 

@@ -1,0 +1,21 @@
+.social-login-container span {
+    width: 45%;
+    height: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.71);
+    margin: 0 7px;
+}
+
+.social-login-container button {
+    border-radius: 5px;
+    border: none;
+    padding: 2%;
+    color: white;
+}
+
+.google-login-btn {
+    background-color: #d14012;
+}
+
+.facebook-login-btn {
+    background-color: #445c8a;
+}
