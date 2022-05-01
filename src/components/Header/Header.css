@@ -7,3 +7,8 @@
 .navbar-light .navbar-nav .nav-link {
     color: black;
 }
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #f0a143
+}

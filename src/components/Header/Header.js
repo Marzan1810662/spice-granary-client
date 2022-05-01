@@ -3,6 +3,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 import './Header.css';
 
 const Header = () => {
@@ -24,7 +25,7 @@ const Header = () => {
                                 <NavDropdown.Item as={NavLink} to="/addItems">Add Items</NavDropdown.Item>
                                 <NavDropdown.Item as={NavLink} to="/myItems">My Items</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={NavLink} to="/action/3.4">Logout</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to="" onClick={() => signOut(auth)}>Logout</NavDropdown.Item>
                             </NavDropdown>
                             :
                             <Nav.Link className='pe-3' as={NavLink} to="/login">Login</Nav.Link>
