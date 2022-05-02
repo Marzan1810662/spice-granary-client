@@ -1,15 +1,37 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './login.css';
 
 const Login = () => {
+    const navigate = useNavigate();
     const { register, errors, handleSubmit } = useForm();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        loginError,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const onSubmit = (data) => {
-        console.log("RESULT", data);
+
+        const email = data.Email;
+        const password = data.Password;
+
+        signInWithEmailAndPassword(email, password)
     };
 
+    if (user) {
+        navigate('/')
+    }
+
+    let loginErrorElement;
+    if (loginError) {
+        loginErrorElement = <p className='text-danger'>Error:{loginError.message}</p>
+    }
     return (
         <div className='login-form-main-container d-flex align-items-center 
         justify-content-evenly'>
@@ -27,10 +49,11 @@ const Login = () => {
                     <label className='text-start'>Password</label>
                     <input className='main-form-input mb-2'
                         type="password"
-                        {...register("Pasword", {
+                        {...register("Password", {
                             required: true
                         })}
                     />
+                    {loginErrorElement}
                     <input className='login-btn my-2' type="submit" value="Login" />
                 </form>
                 <h6 className='mb-3'>Already Have An Account?<span className='register-link'><Link to='/register'>Register Now</Link></span> </h6>
