@@ -1,21 +1,54 @@
-import React from 'react';
+import { async } from '@firebase/util';
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
 const Register = () => {
+    const [inputError, setInputError] = useState('');
+    const navigate = useNavigate();
     const { register, errors, handleSubmit } = useForm();
-    const onSubmit = (data) => {
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        registerError,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const onSubmit = async (data) => {
         console.log("RESULT", data);
+        const name = data.Name;
+        const email = data.Email;
+        const password = data.Password;
+        const confirmPassword = data.confirmPassword;
+        console.log(name, email, password, confirmPassword);
+
+        if (password !== confirmPassword) {
+            setInputError('Passwords do not match');
+            return;
+        }
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
     };
-    // console.log(errors);
+    console.log(user);
+
+    if (user) {
+        navigate('/');
+    }
+
+    let registerErrorElement;
+    if (registerError) {
+        registerErrorElement = <p className='text-danger'>Error:{registerError.message}</p>
+    }
 
     return (
-        <div className='d-flex align-items-center 
-        justify-content-evenly main-container'>
+        <div className='register-form-main-container d-flex align-items-center 
+        justify-content-evenly'>
             <div className='img-container'>
-                {/* <img src="https://thumbs.dreamstime.com/z/various-spices-white-wooden-background-top-view-copy-space-56315975.jpg" alt="" /> */}
             </div>
             <div className='form-conatiner container my-5 mx-3 mx-md-5'>
                 <h2>Register</h2>
@@ -23,7 +56,7 @@ const Register = () => {
                     <label className='text-start'>Name</label>
                     <input className='main-form-input mb-2'
                         type="text"
-                        {...register("Name", { required: true, maxLength: 80, pattern: /^[A-Za-z]+$/ })}
+                        {...register("Name", { required: true, maxLength: 80, pattern: /^[0-9a-zA-Z]+$/ })}
                     />
                     <label className='text-start'>Email</label>
                     <input className='main-form-input mb-2'
@@ -36,17 +69,19 @@ const Register = () => {
                     <label className='text-start'>Password</label>
                     <input className='main-form-input mb-2'
                         type="password"
-                        {...register("Pasword", {
+                        {...register("Password", {
                             required: true
                         })}
                     />
                     <label className='text-start'>Confirm Password</label>
                     <input className='main-form-input mb-2'
                         type="password"
-                        {...register("Confirm Pasword", {
+                        {...register("confirmPassword", {
                             required: true
                         })}
                     />
+                    <p className=' text-danger'>{inputError}</p>
+                    {registerErrorElement}
                     <input className='register-btn my-2' type="submit" value="Register" />
                 </form>
                 <h6 className='mb-3'>Already Have An Account?<span className='login-link'><Link to='/login'>Login</Link></span> </h6>
