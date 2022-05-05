@@ -30,6 +30,15 @@
     color: white;
 }
 
+.reset-btn {
+    color: brown;
+}
+
+.reset-btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .register-link a {
     color: brown;
     font-weight: bold;
