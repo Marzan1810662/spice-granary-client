@@ -1,10 +1,38 @@
 .footer-container {
-    height: 20vh;
-    background-color: #cf8a09ca;
+    background-color: #e3ac44ca;
 }
 
-.footer-container h1 {
+.title-div,
+.contact-div,
+.quick-links-div {
+    width: 100%;
+}
+
+.title-div h1 {
     background-image: linear-gradient(45deg, maroon, rgb(184, 9, 9), rgb(135, 89, 6, 1));
     background-clip: text;
     color: transparent;
+}
+
+.title-div p {
+    color: #ad1908;
+}
+
+.footer-container h5 {
+    text-shadow: none;
+}
+
+.quick-links-div a {
+    text-decoration: none;
+    color: black;
+}
+
+.quick-links-div a :hover {
+    text-decoration: underline;
+}
+
+@media only screen and (min-width:576px) and (max-width:992px) {
+    .title-div h1 {
+        font-size: 30px;
+    }
 }
