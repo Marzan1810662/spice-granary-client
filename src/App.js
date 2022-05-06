@@ -9,6 +9,7 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import ManageInventories from './components/ManageInventories/ManageInventories';
 import AddInventoryItem from './components/AddInventoryItem/AddInventoryItem';
+import MyItems from './components/MyItems/MyItems';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/home' element={<Home />}></Route>
         <Route path='/manageInventories' element={<ManageInventories/>}></Route>
         <Route path='/addInventoryItem' element={<AddInventoryItem/>}></Route>
+        <Route path='/myItems' element={<MyItems/>}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='*' element={<NotFound />}></Route>
