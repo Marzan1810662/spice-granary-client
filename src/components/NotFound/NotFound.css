@@ -2,11 +2,11 @@
     background-image: url('https://img.freepik.com/free-photo/flat-lay-asian-food-spices-mix-chopsticks-with-copy-space_23-2148377566.jpg?size=626&ext=jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 90vh;
+    height: 500px;
 }
 
 .not-found-content-container {
-    padding: 30vh 0;
+    padding: 10% 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.181), rgba(0, 0, 0, 0));
 }
 
@@ -32,7 +32,7 @@ h5 {
     color: white;
 }
 
-a {
+.not-found-content-container a {
     text-decoration: none;
     color: white;
 }
