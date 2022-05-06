@@ -1,0 +1,24 @@
+.section-title {
+    background-image: linear-gradient(to right, rgb(156, 8, 8), orange);
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.itmes-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+}
+
+@media only screen and (max-width:576px) {
+    .itmes-div {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:992px) {
+    .itmes-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

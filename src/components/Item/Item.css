@@ -1,0 +1,47 @@
+.item-div {
+    border: 1px solid rgba(234, 232, 232, 0.493);
+    border-radius: 5px;
+    padding: 5px 5px 10px 5px;
+    background-color: #f3f1ec9c;
+}
+
+.item-div:hover {
+    box-shadow:7px 7px 10px hsl(0deg 0% 44% / 29%);
+}
+
+.img-div {
+    width: 30%;
+}
+
+.info-div {
+    width: 68%;
+    position: relative;
+}
+
+.info-div h4 {
+    color: #d07c1d;
+    text-shadow: 0 0 1px black;
+}
+
+.update-btn {
+    background-color: #e9bd6b;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    left: 64%
+}
+
+@media only screen and (max-width:576px) {
+    .update-btn {
+        position: static;
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:992px) {
+    .update-btn {
+        position: static;
+        margin-left: 115px;
+    }
+}
