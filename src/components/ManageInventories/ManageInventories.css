@@ -1,3 +1,10 @@
+.add-new-item-btn {
+    background-color: #e9bd6b;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+}
+
 .table {
     --bs-table-bg: transparent;
     --bs-table-accent-bg: transparent;

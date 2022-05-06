@@ -2,6 +2,7 @@ import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './ManageInventories.css';
 
 const ManageInventories = () => {
@@ -17,6 +18,9 @@ const ManageInventories = () => {
         <div className='container'>
             <div>
                 <h1 className='section-title my-4'>Manage Inventories</h1>
+            </div>
+            <div className='my-4 me-3 text-end'>
+                <Link to={'/addInventoryItem'}> <button className='add-new-item-btn fw-bold'>  Add New Item</button></Link>
             </div>
             <div className='container-fluid'>
                 <Table striped bordered hover responsive>

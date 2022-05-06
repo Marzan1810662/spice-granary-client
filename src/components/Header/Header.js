@@ -22,7 +22,7 @@ const Header = () => {
                             <NavDropdown className='pe-3'
                                 title={user?.displayName ? user.displayName : "Profile"} id="collasible-nav-dropdown">
                                 <NavDropdown.Item as={NavLink} to="/manageInventories">Manage Items</NavDropdown.Item>
-                                <NavDropdown.Item as={NavLink} to="/addItems">Add Items</NavDropdown.Item>
+                                <NavDropdown.Item as={NavLink} to="/addInventoryItem">Add Item</NavDropdown.Item>
                                 <NavDropdown.Item as={NavLink} to="/myItems">My Items</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={NavLink} to="" onClick={() => signOut(auth)}>Logout</NavDropdown.Item>
