@@ -10,6 +10,12 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
 }
+.manage-inventory-btn{
+    background-color: #e9bd6b;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+}
 
 @media only screen and (max-width:576px) {
     .itmes-div {
