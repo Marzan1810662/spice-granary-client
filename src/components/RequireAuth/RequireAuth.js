@@ -7,7 +7,9 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 const RequireAuth = ({ children }) => {
     const [user, loading, error] = useAuthState(auth);
     const location = useLocation();
-
+    if (loading) {
+        return <LoadingSpinner />
+    }
     if (!user) {
         return <Navigate to='/login' state={{ from: location }} replace />
     }

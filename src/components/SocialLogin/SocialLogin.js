@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './SocialLogin.css';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const SocialLogin = () => {
     const [error, setError] = useState();
@@ -15,7 +16,7 @@ const SocialLogin = () => {
     const from =  location?.state?.from?.pathname || '/';
 
     if (googleLoading) {
-        return <p>loading ...</p>
+        return <LoadingSpinner/>
     }
 
     let authErrorElement;

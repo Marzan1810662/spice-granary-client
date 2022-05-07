@@ -5,9 +5,13 @@ import { NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import './Header.css';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
+    if (loading) {
+        return <LoadingSpinner />
+    }
     return (
         <Navbar className='navbar' collapseOnSelect expand="lg" >
             <Container>

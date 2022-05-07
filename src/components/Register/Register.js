@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
@@ -35,6 +36,10 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
     };
+
+    if (loading) {
+        return <LoadingSpinner />
+    }
     console.log(user);
 
     const from =  location?.state?.from?.pathname || '/';

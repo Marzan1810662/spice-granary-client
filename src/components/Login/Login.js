@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './login.css';
 
@@ -29,6 +30,10 @@ const Login = () => {
 
         signInWithEmailAndPassword(email, password)
     };
+
+    if (loading) {
+        return <LoadingSpinner />
+    }
 
     const handleResetPassword = async () => {
         const email = getValues("Email");
