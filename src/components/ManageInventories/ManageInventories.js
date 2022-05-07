@@ -2,10 +2,11 @@ import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ManageInventories.css';
 
 const ManageInventories = () => {
+    const navigate = useNavigate();
     const [items, setItems] = useState([]);
     let number = 0;
 
@@ -49,7 +50,7 @@ const ManageInventories = () => {
                                 <td>{item.email}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.price}</td>
-                                <td><button><FontAwesomeIcon icon={faEdit} /></button></td>
+                                <td><button onClick={()=> navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
                                 <td><button><FontAwesomeIcon icon={faTrashCan} /></button></td>
                             </tr>)
                         }

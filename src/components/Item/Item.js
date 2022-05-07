@@ -1,10 +1,12 @@
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Item.css';
 
 const Item = ({ item }) => {
-    const { name, email, picture, shortDescription, quantity, price, supplierName } = item;
+    const { _id, name, email, picture, shortDescription, quantity, price, supplierName } = item;
+    const navigate = useNavigate();
     return (
         <div className='item-div d-flex justify-content-between'>
             <div className='img-div'>
@@ -16,7 +18,7 @@ const Item = ({ item }) => {
                 <p className='mb-1'><strong>Price:</strong> {price}</p>
                 <h6>Stock Quantity: {quantity}</h6>
                 <p><strong>Supplier:</strong> {supplierName}</p>
-                <button className='update-btn'><FontAwesomeIcon icon={faEdit} /> Update</button>
+                <button onClick={()=> navigate(`/inventory/${_id}`)}  className='update-btn'><FontAwesomeIcon icon={faEdit} /> Update</button>
             </div>
         </div>
     );

@@ -1,0 +1,88 @@
+.add-item-section-title {
+    text-shadow: none;
+}
+
+.update-item-div {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    width: 60%;
+    padding: 10px;
+    background-color: rgba(245, 245, 245, 0.862);
+}
+
+.update-img-div {
+    width: 40%;
+}
+
+.update-info-div {
+    width: 55%;
+}
+
+.delevered-btn {
+    background-color: #e9bd6b;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 10px 0 15px 0;
+}
+
+.restock-item-div {
+    border: 1px solid rgb(151, 103, 103);
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.update-qty-input {
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid #0000007a;
+    padding: 5px;
+}
+
+.update-qty-btn {
+    border-radius: 5px;
+    background-color: brown;
+    border: none;
+    padding: 2%;
+    color: white;
+    width: 40%;
+}
+
+@media only screen and (max-width: 576px) {
+    .update-item-div {
+        width: 100%;
+    }
+
+    .update-img-div {
+        width: 100%;
+    }
+
+    .update-info-div {
+        width: 100%;
+    }
+
+    .update-qty-input {
+        width: 80%;
+    }
+
+    .update-qty-btn {
+        width: 65%;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 992px) {
+    .update-item-div {
+        margin-top: 50px;
+        width: 100%;
+    }
+
+    .update-img-div {
+        width: 100%;
+    }
+
+    .update-info-div {
+        margin-top: 5%;
+        width: 100%;
+    }
+}

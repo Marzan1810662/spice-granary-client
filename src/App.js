@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import ManageInventories from './components/ManageInventories/ManageInventories';
 import AddInventoryItem from './components/AddInventoryItem/AddInventoryItem';
 import MyItems from './components/MyItems/MyItems';
+import UpdateItemInformation from './components/UpdateItemInformation/UpdateItemInformation';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/manageInventories' element={<ManageInventories/>}></Route>
+        <Route path='/inventory/:id' element={<UpdateItemInformation/>}></Route>
         <Route path='/addInventoryItem' element={<AddInventoryItem/>}></Route>
         <Route path='/myItems' element={<MyItems/>}></Route>
         <Route path='/register' element={<Register />}></Route>
