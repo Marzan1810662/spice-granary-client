@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 import './ManageInventories.css';
 
 const ManageInventories = () => {
@@ -17,6 +18,7 @@ const ManageInventories = () => {
     }, [])
     return (
         <div className='container'>
+            <PageTitle title='Manage Inventories'/>
             <div>
                 <h1 className='section-title my-4'>Manage Inventories</h1>
             </div>

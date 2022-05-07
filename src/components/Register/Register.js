@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import PageTitle from '../PageTitle/PageTitle';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
@@ -55,6 +56,7 @@ const Register = () => {
     return (
         <div className='register-form-main-container d-flex align-items-center 
         justify-content-evenly'>
+            <PageTitle title='Register'/>
             <div className='img-container'>
             </div>
             <div className='form-conatiner container my-5 mx-3 mx-md-5'>

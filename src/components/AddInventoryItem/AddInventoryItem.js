@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PageTitle from '../PageTitle/PageTitle';
 import './AddInventoryItem.css';
 
 const AddInventoryItem = () => {
@@ -12,7 +13,7 @@ const AddInventoryItem = () => {
     // console.log(watch("exampleRequired"));
     return (
         <div className='add-item-main-container py-4'>
-
+            <PageTitle  title="Add New Item"/>
             <div className='add-item-form-conatiner container my-5 mx-auto'>
                 <div>
                     <h1 className='add-item-section-title my-3 fw-bold'>Add Inventory Item</h1>
@@ -26,7 +27,7 @@ const AddInventoryItem = () => {
                     {errors.description && <span className='text-start text-danger'>This field is required</span>}
                     <label className='text-start'>Image URL</label>
                     <input className='main-form-input mb-2' type="text" {...register("picture", { required: true })} />
-                    {watch("picture") && (<span className='text-start text-black'> <small>***Please host your image and insert the image url only. uploading image option will be coming soon.</small></span> )}
+                    {watch("picture") && (<span className='text-start text-black'> <small>***Please host your image and insert the image url only. uploading image option will be coming soon.</small></span>)}
                     {errors.picture && <span className='text-start text-danger'>This field is required</span>}
                     <label className='text-start'>Supplier Name</label>
                     <input className='main-form-input mb-2' type="text" {...register("supplierName", { required: true })} />

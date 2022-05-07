@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 import './UpdateItemInformation.css';
 
 const UpdateItemInformation = () => {
@@ -16,6 +17,7 @@ const UpdateItemInformation = () => {
 
     return (
         <div className='main-update-container container py-3'>
+            <PageTitle title='Update Item'/>
             <div>
                 <h1 className='add-item-section-title my-3 fw-bold'>Update Inventory Item</h1>
             </div>

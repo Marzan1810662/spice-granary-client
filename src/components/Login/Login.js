@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import PageTitle from '../PageTitle/PageTitle';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './login.css';
 
@@ -61,6 +62,7 @@ const Login = () => {
     return (
         <div className='login-form-main-container d-flex align-items-center 
         justify-content-evenly'>
+            <PageTitle title='Login'/>
             <div className='form-conatiner container my-5 mx-3 mx-md-5'>
                 <h2>Login</h2>
                 <form className='main-form d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>

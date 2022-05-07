@@ -1,10 +1,12 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import PageTitle from '../PageTitle/PageTitle';
 import './MyItems.css';
 
 const MyItems = () => {
     return (
         <div className='container'>
+            <PageTitle title='My Items'/>
             <div>
                 <h1 className='add-item-section-title my-3 fw-bold'>My Items</h1>
             </div>
