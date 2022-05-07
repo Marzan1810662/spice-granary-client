@@ -3,13 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import auth from '../../firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './SocialLogin.css';
 
 const SocialLogin = () => {
     const [error, setError] = useState();
+    let location = useLocation();
     const navigate = useNavigate();
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+   
+    const from =  location?.state?.from?.pathname || '/';
 
     if (googleLoading) {
         return <p>loading ...</p>
@@ -21,7 +24,7 @@ const SocialLogin = () => {
     }
 
     if (googleUser) {
-        navigate('/');
+        navigate(from , {replace:true});
     }
     return (
         <div className='social-login-container'>

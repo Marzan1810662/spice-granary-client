@@ -2,13 +2,14 @@ import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
 const Register = () => {
     const [inputError, setInputError] = useState('');
+    const location = useLocation();
     const navigate = useNavigate();
     const { register, errors, handleSubmit } = useForm();
     const [
@@ -36,8 +37,9 @@ const Register = () => {
     };
     console.log(user);
 
+    const from =  location?.state?.from?.pathname || '/';
     if (user) {
-        navigate('/');
+        navigate(from, { replace: true });
     }
 
     let registerErrorElement;
