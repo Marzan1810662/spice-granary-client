@@ -30,6 +30,10 @@
     color: white;
 }
 
+.register-btn:disabled{
+    background-color: gray;
+}
+
 .login-link a {
     color: brown;
     font-weight: bold;

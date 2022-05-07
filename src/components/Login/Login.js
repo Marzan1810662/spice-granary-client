@@ -13,7 +13,7 @@ const Login = () => {
     let location = useLocation();
     const navigate = useNavigate();
     const [emailError, setEmailError] = useState('');
-    const { register, errors, getValues, handleSubmit } = useForm();
+    const { register, handleSubmit, getValues, watch, formState: { errors } } = useForm();
     const [
         signInWithEmailAndPassword,
         user,
@@ -72,7 +72,8 @@ const Login = () => {
                             pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                         })}
                     />
-                    <p className='text-danger text-start'>{emailError}</p>
+                    {errors.Email && <span className='text-start text-danger'>This field is required</span>}
+                    <p className={`text-start text-danger ${emailError ? 'd-block' : 'd-none'}`}>{emailError}</p>
                     <label className='text-start'>Password</label>
                     <input className='main-form-input mb-2'
                         type="password"
@@ -80,6 +81,7 @@ const Login = () => {
                             required: true
                         })}
                     />
+                    {errors.Password && <span className='text-start text-danger'>This field is required</span>}
                     <h6 className='mb-3 text-start'>Forgot password?<span className='reset-btn' onClick={handleResetPassword} >Reset</span> </h6>
                     {loginErrorElement}
                     <input className='login-btn my-2' type="submit" value="Login" />

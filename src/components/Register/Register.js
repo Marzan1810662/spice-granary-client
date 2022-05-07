@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -10,9 +9,10 @@ import './Register.css';
 
 const Register = () => {
     const [inputError, setInputError] = useState('');
+    const [agree, setAgree] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const { register, errors, handleSubmit } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -42,7 +42,7 @@ const Register = () => {
     }
     console.log(user);
 
-    const from =  location?.state?.from?.pathname || '/';
+    const from = location?.state?.from?.pathname || '/';
     if (user) {
         navigate(from, { replace: true });
     }
@@ -65,6 +65,7 @@ const Register = () => {
                         type="text"
                         {...register("Name", { required: true, maxLength: 80, pattern: /^[0-9a-zA-Z]+$/ })}
                     />
+                    {errors.Name && <span className='text-start text-danger'>This field is required</span>}
                     <label className='text-start'>Email</label>
                     <input className='main-form-input mb-2'
                         type="email"
@@ -73,6 +74,7 @@ const Register = () => {
                             pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                         })}
                     />
+                    {errors.Email && <span className='text-start text-danger'>This field is required</span>}
                     <label className='text-start'>Password</label>
                     <input className='main-form-input mb-2'
                         type="password"
@@ -80,6 +82,7 @@ const Register = () => {
                             required: true
                         })}
                     />
+                    {errors.Password && <span className='text-start text-danger'>This field is required</span>}
                     <label className='text-start'>Confirm Password</label>
                     <input className='main-form-input mb-2'
                         type="password"
@@ -87,9 +90,18 @@ const Register = () => {
                             required: true
                         })}
                     />
-                    <p className=' text-danger'>{inputError}</p>
+                    {errors.confirmPassword && <span className='text-start text-danger'>This field is required</span>}
+                    <p className={`text-start text-danger ${inputError ? 'd-block' : 'd-none'}`}>{inputError}</p>
                     {registerErrorElement}
-                    <input className='register-btn my-2' type="submit" value="Register" />
+                    <span className='text-start mb-2'>                   
+                         <input onClick={() => setAgree(!agree)} className='main-form-input'
+                        type="checkbox"
+                        {...register("termsCheck", {
+                            required: true
+                        })}
+                    />
+                        <span> I Agree to the Terms and Conditions</span></span>
+                    <input className='register-btn  my-2' type="submit" value="Register" disabled={!agree} />
                 </form>
                 <h6 className='mb-3'>Already Have An Account?<span className='login-link'><Link to='/login'>Login</Link></span> </h6>
                 <SocialLogin />
