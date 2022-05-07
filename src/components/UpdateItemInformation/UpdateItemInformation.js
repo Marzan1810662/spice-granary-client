@@ -4,32 +4,68 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
+import swal from 'sweetalert';
 import PageTitle from '../PageTitle/PageTitle';
 import './UpdateItemInformation.css';
 
 const UpdateItemInformation = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { id } = useParams(); 
+    const { id } = useParams();
     const [item, setItem] = useState({});
+    const [quantity, setQuantity] = useState(0)
 
     useEffect(() => {
         const url = `https://spice-granary.herokuapp.com/item/${id}`;
-        console.log(url);
 
         axios.get(url)
+            .then(response => {
+                const { data } = response;
+                setItem(data);
+                setQuantity(data.quantity)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, [id]);
+
+    const onSubmit = data => {
+        // console.log(data);
+    };
+
+    const handleDeleveredbutton = () => {
+        const newQuantity = quantity - 1;
+        if (newQuantity === 0) {
+            swal({
+                title: "Out of Stock!",
+                text: "This item is out of stock!",
+                icon: "info",
+            });
+        }
+        setQuantity(newQuantity);
+        const updatedItem ={...item,quantity:newQuantity}
+        console.log(updatedItem);
+        updateItemQuantity(updatedItem);
+
+    }
+
+    const updateItemQuantity = (updatedItem) => {
+        axios.put('https://spice-granary.herokuapp.com/item', updatedItem)
         .then(response => {
             const {data} = response;
-            console.log(response);
-            console.log(data);
-            setItem(data);
+            console.log(data.nModified);
+            if(data.nModified === 1){
+                swal({
+                    title: "Stock Updated!",
+                    text: "Stock updated Succeessfully",
+                    icon: "success",
+                    button: false,
+                    timer: 1500
+                });
+            } 
         })
         .catch(error => {
             console.log(error);
-        })
-    },[id]);
-
-    const onSubmit = data => {
-        console.log(data);
+        });
     };
 
     return (
@@ -49,10 +85,10 @@ const UpdateItemInformation = () => {
                     <p className='mb-2'>Id: {item._id} </p>
                     <p className='mb-2'><strong>Name:</strong> {item.name}</p>
                     <p className='mb-2'><strong> Description:</strong> {item.description}</p>
-                    <p className='mb-2'><strong>Price:</strong> {item.price}</p>
-                    <p className='mb-2'><strong> Stock Quantity:</strong> {item.quantity}</p>
+                    <p className='mb-2'><strong>Price:</strong> {item.price} &#2547; per kg</p>
+                    <p className='mb-2'><strong> Stock Quantity:</strong> {quantity} kg</p>
                     <p className='mb-2'><strong>Supplier Name:</strong>  {item.supplierName}</p>
-                    <button className='delevered-btn'><FontAwesomeIcon icon={faShippingFast} /> Delivered</button>
+                    <button onClick={handleDeleveredbutton} disabled={quantity < 1 ? true : false} className='delevered-btn'><FontAwesomeIcon icon={faShippingFast} /> Delivered</button>
 
                     <div className='restock-item-div'>
                         <h3 className='add-item-section-title my-3 fw-bold'>Restock Item</h3>
