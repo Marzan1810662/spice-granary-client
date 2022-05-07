@@ -35,3 +35,13 @@
     background-color: #d10e0e;
     color: #e2e8ee;
 }
+
+.swal-footer{
+    text-align: center;
+}
+.swal-button--Cancel{
+   background-color: #870808;
+}
+.swal-button--Cancel:not([disabled]):hover {
+    background-color: #870808;
+}

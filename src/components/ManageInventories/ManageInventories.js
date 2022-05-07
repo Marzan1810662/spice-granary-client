@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import PageTitle from '../PageTitle/PageTitle';
 import './ManageInventories.css';
 
@@ -13,19 +14,48 @@ const ManageInventories = () => {
     let number = 0;
 
     useEffect(() => {
-            axios.get('https://spice-granary.herokuapp.com/items')
+        axios.get('https://spice-granary.herokuapp.com/items')
             .then(response => {
-                console.log(response);
-                const {data} = response;
+                const { data } = response;
                 setItems(data);
             })
             .catch(error => {
                 console.log(error);
             })
     }, []);
+
+    const handleDeleteItem = (id) => {
+        console.log(id);
+        swal({
+            title: "Are you sure?",
+            text: "This item will be deleted permanently",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `https://spice-granary.herokuapp.com/item/${id}`;
+                    axios.delete(url)
+                        .then(response => {
+                            const remaining = items.filter(item => item._id !== id);
+                            setItems(remaining);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                    swal("Item deleted successfully", {
+                        icon: "success",
+                        button:false,
+                        timer: 1500
+                    });
+                }
+            });
+    }
+
     return (
         <div className='container'>
-            <PageTitle title='Manage Inventories'/>
+            <PageTitle title='Manage Inventories' />
             <div>
                 <h1 className='section-title my-4'>Manage Inventories</h1>
             </div>
@@ -59,8 +89,8 @@ const ManageInventories = () => {
                                 <td>{item.email}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.price}</td>
-                                <td><button className='update-btn-icon' onClick={()=> navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
-                                <td><button className='delete-btn-icon'><FontAwesomeIcon icon={faTrashCan} /></button></td>
+                                <td><button className='update-btn-icon' onClick={() => navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
+                                <td><button className='delete-btn-icon' onClick={() => handleDeleteItem(item._id)}><FontAwesomeIcon icon={faTrashCan} /></button></td>
                             </tr>)
                         }
                     </tbody>

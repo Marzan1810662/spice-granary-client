@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import PageTitle from '../PageTitle/PageTitle';
@@ -32,7 +33,34 @@ const MyItems = () => {
     if (loading) {
         return <LoadingSpinner />;
     }
-
+    const handleDeleteItem = (id) => {
+        console.log(id);
+        swal({
+            title: "Are you sure?",
+            text: "This item will be deleted permanently",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `https://spice-granary.herokuapp.com/item/${id}`;
+                    axios.delete(url)
+                        .then(response => {
+                            const remaining = items.filter(item => item._id !== id);
+                            setItems(remaining);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                    swal("Item deleted successfully", {
+                        icon: "success",
+                        button:false,
+                        timer: 1500
+                    });
+                }
+            });
+    }
 
     return (
         <div className='container'>
@@ -68,7 +96,7 @@ const MyItems = () => {
                                 <td>{item.quantity}</td>
                                 <td>{item.price}</td>
                                 <td><button className='update-btn-icon' onClick={()=> navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
-                                <td><button className='delete-btn-icon'><FontAwesomeIcon icon={faTrashCan} /></button></td>
+                                <td><button className='delete-btn-icon' onClick={() => handleDeleteItem(item._id)}><FontAwesomeIcon icon={faTrashCan} /></button></td>
                             </tr>)
                         }
                     </tbody>
