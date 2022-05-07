@@ -2,6 +2,10 @@
     text-shadow: none;
 }
 
+.manage-inventory-btn-div{
+    width: 60%;
+}
+
 .update-item-div {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
@@ -50,6 +54,9 @@
 }
 
 @media only screen and (max-width: 576px) {
+    .manage-inventory-btn-div{
+        width: 100%;
+    }
     .update-item-div {
         width: 100%;
     }
@@ -72,6 +79,9 @@
 }
 
 @media only screen and (min-width: 576px) and (max-width: 992px) {
+    .manage-inventory-btn-div{
+        width: 100%;
+    }
     .update-item-div {
         margin-top: 50px;
         width: 100%;

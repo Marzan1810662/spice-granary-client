@@ -1,8 +1,8 @@
-import { faShippingFast } from '@fortawesome/free-solid-svg-icons';
+import { faListCheck, faShippingFast } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import PageTitle from '../PageTitle/PageTitle';
 import './UpdateItemInformation.css';
 
@@ -20,6 +20,9 @@ const UpdateItemInformation = () => {
             <PageTitle title='Update Item'/>
             <div>
                 <h1 className='add-item-section-title my-3 fw-bold'>Update Inventory Item</h1>
+            </div>
+            <div className='manage-inventory-btn-div my-4 mx-auto  text-end'>
+               <Link to={'/manageInventories'}> <button className='manage-inventory-btn  fw-bold'><FontAwesomeIcon icon={faListCheck}/>  Manage Inventories</button></Link>
             </div>
             <div className='update-item-div container p-4 d-flex flex-column flex-lg-row justify-content-around'>
                 <div className='update-img-div'>
