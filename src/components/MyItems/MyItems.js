@@ -55,7 +55,7 @@ const MyItems = () => {
                         })
                     swal("Item deleted successfully", {
                         icon: "success",
-                        button:false,
+                        button: false,
                         timer: 1500
                     });
                 }
@@ -78,8 +78,8 @@ const MyItems = () => {
                             <th>Description</th>
                             <th>Suplier Name</th>
                             <th>Added By</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Quantity (kg)</th>
+                            <th>Price (&#2547;)</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -95,7 +95,7 @@ const MyItems = () => {
                                 <td>{item.email}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.price}</td>
-                                <td><button className='update-btn-icon' onClick={()=> navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
+                                <td><button className='update-btn-icon' onClick={() => navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
                                 <td><button className='delete-btn-icon' onClick={() => handleDeleteItem(item._id)}><FontAwesomeIcon icon={faTrashCan} /></button></td>
                             </tr>)
                         }

@@ -72,8 +72,8 @@ const ManageInventories = () => {
                             <th>Description</th>
                             <th>Suplier Name</th>
                             <th>Added By</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Quantity (kg)</th>
+                            <th>Price (&#2547;)</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>

@@ -29,7 +29,13 @@ const UpdateItemInformation = () => {
     }, [id]);
 
     const onSubmit = data => {
-        // console.log(data);
+        const inputQuantity = parseInt(data.quantity);
+        const newQuantity = quantity + inputQuantity;
+
+        setQuantity(newQuantity);
+        const updatedItem = { ...item, quantity: newQuantity }
+        console.log(updatedItem);
+        updateItemQuantity(updatedItem);
     };
 
     const handleDeleveredbutton = () => {
@@ -42,7 +48,7 @@ const UpdateItemInformation = () => {
             });
         }
         setQuantity(newQuantity);
-        const updatedItem ={...item,quantity:newQuantity}
+        const updatedItem = { ...item, quantity: newQuantity }
         console.log(updatedItem);
         updateItemQuantity(updatedItem);
 
@@ -50,22 +56,22 @@ const UpdateItemInformation = () => {
 
     const updateItemQuantity = (updatedItem) => {
         axios.put('https://spice-granary.herokuapp.com/item', updatedItem)
-        .then(response => {
-            const {data} = response;
-            console.log(data.nModified);
-            if(data.nModified === 1){
-                swal({
-                    title: "Stock Updated!",
-                    text: "Stock updated Succeessfully",
-                    icon: "success",
-                    button: false,
-                    timer: 1500
-                });
-            } 
-        })
-        .catch(error => {
-            console.log(error);
-        });
+            .then(response => {
+                const { data } = response;
+                console.log(data.nModified);
+                if (data.nModified === 1) {
+                    swal({
+                        title: "Stock Updated!",
+                        text: "Stock updated Succeessfully",
+                        icon: "success",
+                        button: false,
+                        timer: 1200
+                    });
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
 
     return (
