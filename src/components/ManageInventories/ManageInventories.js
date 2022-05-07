@@ -1,5 +1,6 @@
 import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,10 +13,16 @@ const ManageInventories = () => {
     let number = 0;
 
     useEffect(() => {
-        fetch('inventory.json')
-            .then(res => res.json())
-            .then(data => setItems(data))
-    }, [])
+            axios.get('https://spice-granary.herokuapp.com/items')
+            .then(response => {
+                console.log(response);
+                const {data} = response;
+                setItems(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, []);
     return (
         <div className='container'>
             <PageTitle title='Manage Inventories'/>
@@ -47,7 +54,7 @@ const ManageInventories = () => {
                                 <td>{++number}</td>
                                 <td className='img-box'><img className='img-fluid' src={item.picture} alt="" /></td>
                                 <td>{item.name}</td>
-                                <td>{item.shortDescription}</td>
+                                <td>{item.description}</td>
                                 <td>{item.supplierName}</td>
                                 <td>{item.email}</td>
                                 <td>{item.quantity}</td>
