@@ -2,7 +2,7 @@
     background-image: url('https://previews.123rf.com/images/nitr/nitr1612/nitr161200042/69248220-diverses-%C3%A9pices-sur-fond-en-bois-vue-de-dessus-avec-espace-copie-banni%C3%A8re.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 50vh;
+    height: 50%;
 }
 
 .banner div {
@@ -42,7 +42,7 @@ h4 {
 
 @media only screen and (min-width:576px) and (max-width:992px) {
     .banner div {
-        padding-top: 20vh;
+        padding-top: 20%;
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.137), rgba(0, 0, 0, 0));
     }
 
