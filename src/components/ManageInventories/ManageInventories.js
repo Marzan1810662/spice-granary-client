@@ -52,8 +52,8 @@ const ManageInventories = () => {
                                 <td>{item.email}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.price}</td>
-                                <td><button onClick={()=> navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
-                                <td><button><FontAwesomeIcon icon={faTrashCan} /></button></td>
+                                <td><button className='update-btn-icon' onClick={()=> navigate(`/inventory/${item._id}`)}><FontAwesomeIcon icon={faEdit} /></button></td>
+                                <td><button className='delete-btn-icon'><FontAwesomeIcon icon={faTrashCan} /></button></td>
                             </tr>)
                         }
                     </tbody>

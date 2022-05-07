@@ -28,3 +28,10 @@
 .img-box {
     width: 10%;
 }
+.update-btn-icon{
+    background-color: #e9bd6b;
+}
+.delete-btn-icon{
+    background-color: #d10e0e;
+    color: #e2e8ee;
+}
