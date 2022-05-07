@@ -14,7 +14,7 @@ const AddInventoryItem = () => {
         ;
         const newItem = data;
         axios.post('https://spice-granary.herokuapp.com/item', newItem)
-            .then(function (response) {
+            .then(response => {
                 const {data} = response;
                if(data.insertedId){
                 swal({
@@ -26,7 +26,7 @@ const AddInventoryItem = () => {
                   });
                }
             })
-            .catch(function (error) {
+            .catch(error => {
                 console.log(error);
             });
     };
