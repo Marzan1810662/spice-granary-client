@@ -38,10 +38,10 @@ const UpdateItemInformation = () => {
         updateItemQuantity(updatedItem);
     };
 
-    const handleDeleveredbutton = () => {
+    const handleDeleveredbutton = async() => {
         const newQuantity = quantity - 1;
         if (newQuantity === 0) {
-            swal({
+            await swal({
                 title: "Out of Stock!",
                 text: "This item is out of stock!",
                 icon: "info",
