@@ -10,8 +10,7 @@ const Blogs = () => {
             <div className='container qna-container'>
                 <div className=' qna-div'>
                     <h5>Q1. What is the difference between javascript and nodejs?</h5>
-                    <p className='text-start mb-1'>
-                        <ul>
+                        <ul className='text-start mb-1'>
                             <li>Javascript is a programming language used for writing script on the website whereas NodeJs in a javascript runtime environment.</li>
                             <li>Javascript can mainly be used in clientside or browser whereas NodeJS gives javascript the ability to run on serverside.</li>
                             <li>Javascript is capable of adding html but NodeJS is not capable.</li>
@@ -19,7 +18,6 @@ const Blogs = () => {
                             <li>Javascript is theupgraded version of ECMA script that I written in C++.NodeJS is written in C, C++ and Javascript</li>
                             <li>avascript is used for frontend development whereas NodeJS is used for serverside development.</li>
                         </ul>
-                    </p>
                 </div>
                 <div className='qna-div'>
                     <h5>Q2.  When should you use nodejs and when should you use mongodb?</h5>
@@ -28,8 +26,7 @@ const Blogs = () => {
                 </div>
                 <div className='qna-div'>
                     <h5>Q3. What is the differences between sql and nosql databases?</h5>
-                    <p className='text-start'>
-                        <ul>
+                        <ul className='text-start'>
                             <li>SQL databases are relational database, but NoSQL databases are non-relational database.</li>
                             <li>SQL means structured query language, it is used in SQL databases and follow a predefined schema. NoSQL databases follows dynamic schemas for unstructured data.</li>
                             <li>SQL databases are vertically scalable, while NoSQL databases are horizontally scalable.</li>
@@ -37,7 +34,6 @@ const Blogs = () => {
                             <li>SQL databases performs better in multi-row transactions, while NoSQL is better for unstructured data such as documents or JSON.</li>
                             <li>SQL database examples are MySQL, PostgreSQL, and Oracle etc.NoSQL database examples are MongoDB, CouchDB, CouchBase, Cassandra, HBase, Redis, Riak, Neo4J etc.</li>
                         </ul>
-                    </p>
                 </div>
                 <div className='qna-div'>
                     <h5>Q4. What is the purpose of jwt and how does it work?</h5>
