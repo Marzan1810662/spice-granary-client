@@ -1,0 +1,22 @@
+.chart-div{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.barchart-btn{
+    color: brown;
+}
+.areachart-btn{
+    color: #e9bd6b;
+}
+
+@media only screen and (max-width:576px) {
+    .chart-div{
+        width: 100%;
+    }
+}
+@media only screen and (min-width:576px) and (max-width:992px) {
+    .chart-div{
+        width: 100%;
+    }
+}

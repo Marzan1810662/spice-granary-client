@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
+import Chart from '../Chart/Chart';
 import Inventory from '../Invenvotory/Inventory';
 import PageTitle from '../PageTitle/PageTitle';
 import './Home.css';
@@ -10,6 +11,7 @@ const Home = () => {
             <PageTitle title='Home'/>
             <Banner />
             <Inventory/>
+            <Chart />
         </div>
     );
 };
