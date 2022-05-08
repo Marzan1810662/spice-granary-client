@@ -12,7 +12,8 @@ const AddInventoryItem = () => {
     const [user, loading, error] = useAuthState(auth);
     const onSubmit = data => {
         ;
-        const newItem = data;
+        const newItem = {...data,sold:0};
+        console.log(newItem);
         axios.post('https://spice-granary.herokuapp.com/item', newItem)
             .then(response => {
                 const {data} = response;

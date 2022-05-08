@@ -13,6 +13,7 @@ const UpdateItemInformation = () => {
     const { id } = useParams();
     const [item, setItem] = useState({});
     const [quantity, setQuantity] = useState(0)
+    const [sold, setSold] = useState(0);
 
     useEffect(() => {
         const url = `https://spice-granary.herokuapp.com/item/${id}`;
@@ -21,7 +22,8 @@ const UpdateItemInformation = () => {
             .then(response => {
                 const { data } = response;
                 setItem(data);
-                setQuantity(data.quantity)
+                setQuantity(data.quantity);
+                setSold(data.sold);
             })
             .catch(error => {
                 console.log(error);
@@ -34,12 +36,12 @@ const UpdateItemInformation = () => {
 
         setQuantity(newQuantity);
         const updatedItem = { ...item, quantity: newQuantity }
-        console.log(updatedItem);
         updateItemQuantity(updatedItem);
     };
 
     const handleDeleveredbutton = async() => {
         const newQuantity = quantity - 1;
+        const newSoldQuantity = sold + 1
         if (newQuantity === 0) {
             await swal({
                 title: "Out of Stock!",
@@ -48,8 +50,8 @@ const UpdateItemInformation = () => {
             });
         }
         setQuantity(newQuantity);
-        const updatedItem = { ...item, quantity: newQuantity }
-        console.log(updatedItem);
+        setSold(newSoldQuantity);
+        const updatedItem = { ...item, quantity: newQuantity,sold: newSoldQuantity};
         updateItemQuantity(updatedItem);
 
     }
@@ -58,7 +60,6 @@ const UpdateItemInformation = () => {
         axios.put('https://spice-granary.herokuapp.com/item', updatedItem)
             .then(response => {
                 const { data } = response;
-                console.log(data.nModified);
                 if (data.nModified === 1) {
                     swal({
                         title: "Stock Updated!",
@@ -93,6 +94,7 @@ const UpdateItemInformation = () => {
                     <p className='mb-2'><strong> Description:</strong> {item.description}</p>
                     <p className='mb-2'><strong>Price:</strong> {item.price} &#2547; per kg</p>
                     <p className='mb-2'><strong> Stock Quantity:</strong> {quantity} kg</p>
+                    <p className='mb-2'><strong> Sold Quantity:</strong> {sold} kg</p>
                     <p className='mb-2'><strong>Supplier Name:</strong>  {item.supplierName}</p>
                     <button onClick={handleDeleveredbutton} disabled={quantity < 1 ? true : false} className='delevered-btn'><FontAwesomeIcon icon={faShippingFast} /> Delivered</button>
 

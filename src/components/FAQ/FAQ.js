@@ -8,7 +8,7 @@ const FAQ = () => {
             <div>
                 <h1 className='section-title my-4 p-2'>FAQs</h1>
             </div>
-            <div>
+            <div className='container'>
                 <Accordion defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Why is registering compulsory to add product?</Accordion.Header>
