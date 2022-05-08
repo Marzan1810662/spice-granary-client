@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Children } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import auth from '../../firebase.init';
 import PageTitle from '../PageTitle/PageTitle';
@@ -10,6 +11,7 @@ import './AddInventoryItem.css';
 const AddInventoryItem = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
     const onSubmit = data => {
         ;
         const newItem = {...data,sold:0};
@@ -25,6 +27,7 @@ const AddInventoryItem = () => {
                     timer: 2000,
                     button: false
                   });
+                  navigate('/myItems');
                }
             })
             .catch(error => {
