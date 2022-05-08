@@ -8,6 +8,10 @@
     color: black;
 }
 
+nav a.active{
+    text-decoration: underline;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
     background-color: #f0a143
