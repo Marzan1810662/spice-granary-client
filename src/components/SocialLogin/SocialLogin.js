@@ -6,13 +6,15 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './SocialLogin.css';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import useToken from '../hooks/useToken';
 
 const SocialLogin = () => {
     const [error, setError] = useState();
     let location = useLocation();
     const navigate = useNavigate();
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-   
+    const [token] = useToken(googleUser);
+
     const from =  location?.state?.from?.pathname || '/';
 
     if (googleLoading) {
@@ -24,7 +26,7 @@ const SocialLogin = () => {
         authErrorElement = <p className='text-danger'>Error: {googleError.message}</p>
     }
 
-    if (googleUser) {
+    if (token) {
         navigate(from , {replace:true});
     }
     return (
@@ -37,7 +39,7 @@ const SocialLogin = () => {
             {authErrorElement}
             <div className='d-flex flex-column'>
                 <button onClick={() => signInWithGoogle()} className='google-login-btn my-2'><FontAwesomeIcon icon={faGoogle} /> Continue With Google</button>
-                <button className='facebook-login-btn my-2'><FontAwesomeIcon icon={faFacebookF} /> Continue With Facebook</button>
+                {/* <button className='facebook-login-btn my-2'><FontAwesomeIcon icon={faFacebookF} /> Continue With Facebook</button> */}
             </div>
         </div>
     );

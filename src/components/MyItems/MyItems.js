@@ -1,11 +1,13 @@
 import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import axiosPrivate from '../../api/axiosPrivate';
 import auth from '../../firebase.init';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import PageTitle from '../PageTitle/PageTitle';
@@ -18,17 +20,23 @@ const MyItems = () => {
     let number = 0;
 
     useEffect(() => {
-        const email = user.email;
-        console.log(email);
-        axios.get(`https://spice-granary.herokuapp.com/myItems?email=${email}`)
-            .then(response => {
-                const { data } = response;
+
+        const getMyItems = async () => {
+            const email = user?.email;
+            try {
+                const { data } = await axiosPrivate.get(`https://spice-granary.herokuapp.com/myItems?email=${email}`);
                 setItems(data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+            } catch (error) {
+                console.log(error.message);
+                if(error.response.status === 401 || (error.response.status === 403)){
+                    signOut(auth)
+                    navigate('/login')
+                }
+            }
+        }
+        getMyItems();
+
+    }, [user]);
 
     if (loading) {
         return <LoadingSpinner />;

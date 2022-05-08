@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -5,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
+import useToken from '../hooks/useToken';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import PageTitle from '../PageTitle/PageTitle';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -24,16 +26,22 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
         auth
     );
+    const [token] = useToken(user);
 
-    const onSubmit = (data) => {
-        const email = data.Email;
-        const password = data.Password;
+    const from = location?.state?.from?.pathname || '/';
+    const onSubmit = async (inputData) => {
+        const email = inputData.Email;
+        const password = inputData.Password;
 
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password);
     };
 
     if (loading) {
         return <LoadingSpinner />
+    }
+
+    if (token) {
+        navigate(from, { replace: true })
     }
 
     const handleResetPassword = async () => {
@@ -50,11 +58,6 @@ const Login = () => {
 
     };
 
-    const from = location?.state?.from?.pathname || '/';
-    if (user) {
-        navigate(from, { replace: true })
-    }
-
     let loginErrorElement;
     if (loginError || error) {
         loginErrorElement = <p className='text-danger'>Error:{loginError?.message}{error?.message}</p>
@@ -62,7 +65,7 @@ const Login = () => {
     return (
         <div className='login-form-main-container d-flex align-items-center 
         justify-content-evenly'>
-            <PageTitle title='Login'/>
+            <PageTitle title='Login' />
             <div className='form-conatiner container my-5 mx-3 mx-md-5'>
                 <h2>Login</h2>
                 <form className='main-form d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>

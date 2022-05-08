@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../hooks/useToken';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import PageTitle from '../PageTitle/PageTitle';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -21,6 +22,7 @@ const Register = () => {
         registerError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [token] = useToken(user);
 
     const onSubmit = async (data) => {
         console.log("RESULT", data);
@@ -44,7 +46,7 @@ const Register = () => {
     console.log(user);
 
     const from = location?.state?.from?.pathname || '/';
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 
