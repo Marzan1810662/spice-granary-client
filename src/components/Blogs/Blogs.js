@@ -5,7 +5,7 @@ const Blogs = () => {
     return (
         <div className='container'>
             <div>
-                <h1 className='section-title my-4'>Blogs</h1>
+                <h1 className='section-title my-4 p-2'>Blogs</h1>
             </div>
             <div className='container qna-container'>
                 <div className=' qna-div'>
@@ -28,7 +28,16 @@ const Blogs = () => {
                 </div>
                 <div className='qna-div'>
                     <h5>Q3. What is the differences between sql and nosql databases?</h5>
-                    <p></p>
+                    <p className='text-start'>
+                        <ul>
+                            <li>SQL databases are relational database, but NoSQL databases are non-relational database.</li>
+                            <li>SQL means structured query language, it is used in SQL databases and follow a predefined schema. NoSQL databases follows dynamic schemas for unstructured data.</li>
+                            <li>SQL databases are vertically scalable, while NoSQL databases are horizontally scalable.</li>
+                            <li>SQL databases are table-based, while NoSQL databases are document based.</li>
+                            <li>SQL databases performs better in multi-row transactions, while NoSQL is better for unstructured data such as documents or JSON.</li>
+                            <li>SQL database examples are MySQL, PostgreSQL, and Oracle etc.NoSQL database examples are MongoDB, CouchDB, CouchBase, Cassandra, HBase, Redis, Riak, Neo4J etc.</li>
+                        </ul>
+                    </p>
                 </div>
                 <div className='qna-div'>
                     <h5>Q4. What is the purpose of jwt and how does it work?</h5>
