@@ -29,7 +29,8 @@
     border-radius: 5px;
     padding: 5px 10px;
     position: absolute;
-    left: 64%
+    left: 64%;
+    bottom: 0%;
 }
 
 @media only screen and (max-width:576px) {
