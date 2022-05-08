@@ -1,0 +1,28 @@
+.qna-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.qna-div {
+    border: 1px solid rgba(234, 232, 232, 0.493);
+    border-radius: 5px;
+    padding: 25px;
+    background-color: #f3f1ec9c;
+}
+
+.qna-div:hover {
+    box-shadow: 7px 7px 10px hsl(0deg 0% 44% / 29%);
+}
+
+@media only screen and (max-width:576px) {
+    .qna-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:992px) {
+    .qna-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
