@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 import './Header.css';
@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <Navbar className='navbar' collapseOnSelect expand="lg" >
             <Container>
-                <Navbar.Brand as={NavLink} to="/home">
+                <Navbar.Brand as={Link} to="/home">
                     <h1 className='fw-bold mb-0'>Spice Granary</h1>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
