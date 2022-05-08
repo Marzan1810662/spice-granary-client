@@ -30,7 +30,7 @@ const UpdateItemInformation = () => {
 
     const onSubmit = data => {
         const inputQuantity = parseInt(data.quantity);
-        const newQuantity = quantity + inputQuantity;
+        const newQuantity = parseInt(quantity) + inputQuantity;
 
         setQuantity(newQuantity);
         const updatedItem = { ...item, quantity: newQuantity }
