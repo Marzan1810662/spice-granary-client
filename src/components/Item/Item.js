@@ -15,8 +15,8 @@ const Item = ({ item }) => {
             <div className='info-div text-start'>
                 <h4>{name}</h4>
                 <p className='mb-1'> <strong>Description:</strong> {description}</p>
-                <p className='mb-1'><strong>Price:</strong> {price}</p>
-                <h6>Stock Quantity: {quantity}</h6>
+                <p className='mb-1'><strong>Price:</strong> {price} &#2547; per kg </p>
+                <h6>Stock Quantity: {quantity} kg</h6>
                 <p className='mb-5'><strong>Supplier:</strong> {supplierName}</p>
                 <button onClick={()=> navigate(`/inventory/${_id}`)}  className='update-btn'><FontAwesomeIcon icon={faEdit} /> Update</button>
             </div>

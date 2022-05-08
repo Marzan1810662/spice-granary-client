@@ -19,8 +19,12 @@ const Footer = () => {
                 </div>
                 <div className='quick-links-div mt-4 mt-md-0 mx-auto order-1 order-md-2'>
                     <h5><FontAwesomeIcon icon={faLink} /> Quick Links</h5>
+                    <div className='d-flex flex-column'>
                     <Link className='fw-bold ms-lg-4' to={'/'}>
                         Home</Link>
+                    <Link className='fw-bold ms-lg-4' to={'/blogs'}>
+                        Blogs</Link>
+                    </div>
                 </div>
                 <div className='contact-div text-md-start mt-4 mt-md-0 mx-2 order-2 order-md-3'>
                     <h5><FontAwesomeIcon icon={faContactCard} /> Contact us</h5>
