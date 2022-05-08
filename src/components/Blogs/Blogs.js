@@ -14,7 +14,8 @@ const Blogs = () => {
                 </div>
                 <div className='qna-div'>
                     <h5>Q2.  When should you use nodejs and when should you use mongodb?</h5>
-
+                    <p>Node js is a javascript runtime environment that helps  to run javascript on serverside environment. It's commonly used to create web servers, but it may also be used to write a variety of other kinds of programming. Any project requires a programming environment and a runtime library that can build and/or interpret your code while also providing basic programming tools and support. You can use nodejs to write a Javascript standalone program or server.</p>
+                    <p>MongoDB is a  database management system. It's a database that doesn't use SQL. If your application requires the capacity to save data so that it can be efficiently queried or updated later, you'll almost certainly need to use a database like mongodb.</p>
                 </div>
                 <div className='qna-div'>
                     <h5>Q3. What is the differences between sql and nosql databases?</h5>

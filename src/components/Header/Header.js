@@ -22,6 +22,7 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto fs-5">
                         <Nav.Link className='pe-3' as={NavLink} to="/home">Home</Nav.Link>
+                        <Nav.Link className='pe-3' as={NavLink} to="/blogs">Blogs</Nav.Link>
                         {user ?
                             <NavDropdown className='pe-3'
                                 title={user?.displayName ? user.displayName : "Profile"} id="collasible-nav-dropdown">
